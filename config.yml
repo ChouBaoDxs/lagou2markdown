@@ -1,4 +1,5 @@
-gate_login_token: "gate_login_token" # 登陆完拉勾教育之后，cookie 里的 gate_login_token
-course_id: # 要爬取的课程id
+gate_login_token: "{这里填写自己的gate_login_token}" # 网页登陆完拉勾教育之后，填写 cookie 里的 gate_login_token
+course_ids: # 要爬取的课程id，多个
   - 69 # 分布式技术原理与实战45讲
-save_dir: "./book" # 保存目录，默认会在当前目录下新建一个 book 目录
+  - 447 # Kubernetes 原理剖析与实战应用
+save_dir: "book" # 保存目录，默认会在当前目录下新建一个 book 目录

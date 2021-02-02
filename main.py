@@ -56,12 +56,21 @@ class LagouBook2Markdown:
         markdown_str = html2text.html2text(markdown_html_str)
         img_urls = re.findall(img_pattern, markdown_str)
         for img_index, img_url in enumerate(img_urls):
-            suffix = os.path.splitext(img_url)[-1]
-            img_file_name = f'{img_index + 1}{suffix}'
-            md_relative_img_path = os.path.join(md_relative_img_dir, img_file_name)
-            img_save_path = os.path.join(img_dir, img_file_name)
-            urlretrieve(img_url, img_save_path)
-            markdown_str = markdown_str.replace(img_url, md_relative_img_path)
+            try:
+                suffix = os.path.splitext(img_url)[-1]
+                img_file_name = f'{img_index + 1}{suffix}'
+                md_relative_img_path = os.path.join(md_relative_img_dir, img_file_name)
+                img_save_path = os.path.join(img_dir, img_file_name)
+                urlretrieve(img_url, img_save_path)
+                markdown_str = markdown_str.replace(img_url, md_relative_img_path)
+            except Exception as e:
+                logger.error({
+                    'msg': '处理图片失败',
+                    'img_url': img_url,
+                    'e': repr(e),
+                    'traceback': traceback.format_exc(),
+                    'md_relative_img_dir': md_relative_img_dir
+                })
         with open(md_file_path, 'w', encoding='utf8') as f:
             f.write(markdown_str)
 

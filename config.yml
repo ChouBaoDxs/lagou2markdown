@@ -1,0 +1,4 @@
+gate_login_token: "gate_login_token" # 登陆完拉勾教育之后，cookie 里的 gate_login_token
+course_id: # 要爬取的课程id
+  - 69 # 分布式技术原理与实战45讲
+save_dir: "./book" # 保存目录，默认会在当前目录下新建一个 book 目录

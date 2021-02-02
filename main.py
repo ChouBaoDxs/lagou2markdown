@@ -19,7 +19,7 @@ def makedirs(path):
 
 
 def clear_slash(s: str) -> str:
-    return s.replace('\\', '').replace('/', '')
+    return s.replace('\\', '').replace('/', '').replace('|', '')
 
 
 img_pattern = re.compile(r'(http.*?(?:jpg|png|JPG|PNG))')
